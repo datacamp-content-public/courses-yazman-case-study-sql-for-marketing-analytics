@@ -30,7 +30,7 @@ The example code from the previous slides shows two ways of combining the horser
 
 When we build our table, we'll use an inner join because we have complete data on all respondents for each variable in the two tables. Our issues questions were only asked in key districts, so we could write an inner join that only retains rows where a respondent was asked an issue question, but that would hinder our analysis of other districts. 
 
-Instead we want to use a left join and retain all of our demographic and horserace questions while attaching all the issue questions we have to our base table. 
+Instead we want to use a left join and retain all of our demographic and horserace questions while attaching all the issue questions we have to our base table.
 
 `@instructions`
 Add a left join to our existing syntax joining the `issues` table to the existing combination of the `horserace` and `demographics` tables.
