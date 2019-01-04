@@ -65,3 +65,69 @@ left join issues i on h.respondent_id = i.respondent_id
 ```{python}
 
 ```
+
+---
+
+## Lesson 1 Capstone
+
+```yaml
+type: NormalExercise
+key: 908beb9718
+xp: 100
+```
+
+In our final exercise for chapter 1, we want to use joins to combine our three tables into one base file to simplify the rest of our analysis. Recall that we have three tables containing horserace numbers, demographic data, and a set of specific questions asked only for a subset of survey respondents.  
+
+`@instructions`
+In the exercise, choose the type of join that's most appropriate to add `issues` to our existing base file. Make sure the variables in your `select` clause appropriately reference the
+
+`@hint`
+An `inner join` will return rows for the combined table where `respondent_id` matches in _both_ tables. A `left join` will return all rows from the left table plus any rows that match from the right table.
+
+`@pre_exercise_code`
+```{python}
+connect('postgresql', 'marketing_case_sql_upload')
+set_options(visible_tables = ['horserace', 'demographics', 'issues'])
+```
+
+`@sample_code`
+```{python}
+CREATE TABLE upshot_polling_base as(
+        SELECT h.*
+                , d.race_eth
+                , d.gender
+                , d.age
+                , d.education
+                , d.party
+                , d.region
+                , d.turnout
+                , _.hotdogs_are_sandwiches
+                , _.gushers_are_ravioli
+        FROM horserace h
+        INNER JOIN demographics d ON h.respondent_id = d.respondent_id 
+        _____ JOIN  issues i ON _.____________ = _.____________);
+```
+
+`@solution`
+```{python}
+create table upshot_polling_base as(
+        select 
+                h.*
+                , d.race_eth
+                , d.gender
+                , d.age
+                , d.education
+                , d.party
+                , d.region
+                , d.turnout
+                , i.hotdogs_are_sandwiches
+                , i.gushers_are_ravioli
+        from horserace h
+        inner join demographics d on h.respondent_id = d.respondent_id 
+        left join issues i on h.respondent_id = i.respondent_id);
+```
+
+`@sct`
+```{python}
+
+```
