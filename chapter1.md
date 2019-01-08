@@ -79,7 +79,9 @@ xp: 100
 In our final exercise for chapter 1, we want to use joins to combine our three tables into one base file to simplify the rest of our analysis. Recall that we have three tables containing horserace numbers, demographic data, and a set of specific questions asked only for a subset of survey respondents.  
 
 `@instructions`
-In the exercise, choose the type of join that's most appropriate to add `issues` to our existing base file. Make sure the variables in your `select` clause appropriately reference the
+In the exercise, choose the type of join that's most appropriate to add `issues` to our existing base file. Make sure the variables in your `select` clause appropriately reference the  
+
+- add in bullets here
 
 `@hint`
 An `inner join` will return rows for the combined table where `respondent_id` matches in _both_ tables. A `left join` will return all rows from the left table plus any rows that match from the right table.
@@ -93,7 +95,7 @@ set_options(visible_tables = ['horserace', 'demographics', 'issues'])
 `@sample_code`
 ```{python}
 CREATE TABLE upshot_polling_base as(
-        SELECT h.*
+        SELECT h.*   # Picking which columns we want 
                 , d.race_eth
                 , d.gender
                 , d.age
